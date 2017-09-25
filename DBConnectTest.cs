@@ -436,44 +436,6 @@ namespace Projet_winForm
             return listAff;
         }
 
-        public securite connexion()
-        {
-            securite secu = null;
-           
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT * FROM securite";
-
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-
-
-                //Create a data reader and Execute the command
-                using (MySqlDataReader dataReader = cmd.ExecuteReader())
-                {
-
-                    //Read the data and store them in the list
-                    while (dataReader.Read())
-                    {
-                        secu = new securite();
-                        secu.SetID((int)dataReader["id"]);
-                        secu.SetLogin((string)dataReader["login"]);
-                        secu.SetMDP((string)dataReader["MDP"]);
-                       
-                        
-                    }
-
-                }
-
-
-            }
-
-            return secu ;
-        }
-
     }
                
 }
